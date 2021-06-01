@@ -1,0 +1,60 @@
+class Solution {
+    public boolean isRobotBounded(String instructions) {
+        if(instructions.length() == 0){
+            return false;
+        }
+        int x = 0, y = 0;
+        String d = "North";
+        for(char ch : instructions.toCharArray()){
+            if(ch == 'G'){
+                if(d == "North"){
+                    y++;
+                }
+                else if(d == "South"){
+                    y--;
+                }
+                else if(d == "West"){
+                    x--;
+                }
+                else{
+                    x++;
+                }
+            }
+            else if(ch == 'L'){
+                if(d == "North"){
+                    d = "West";
+                }
+                else if(d == "South"){
+                    d = "East";
+                }
+                else if(d == "West"){
+                    d = "South";
+                }
+                else{
+                    d = "North";
+                }
+            }
+            else if(ch == 'R'){
+                if(d == "North"){
+                    d = "East";
+                }
+                else if(d == "South"){
+                    d = "West";
+                }
+                else if(d == "West"){
+                    d = "North";
+                }
+                else{
+                    d = "South";
+                }
+            }
+        }
+        if(x == 0 && y == 0){
+            return true;
+        }
+        if(d == "North"){
+            return false;
+        }
+        return true;
+    }
+}
